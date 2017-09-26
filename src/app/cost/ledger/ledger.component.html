@@ -1,0 +1,23 @@
+
+<div class="btn-group mb-3" role="group" >
+  <button class="btn btn-info" routerLink="/new-ledger" (click)="addNewLedger()">Add New</button>
+</div>
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ledger of ledgers" (click)="onSelect(ledger)">
+                  <td>{{ledger.id}}</td>
+                  <td>{{ledger.name}}</td>
+                  <td>{{ledger.description}}</td>                  
+                </tr>
+              </tbody>
+            </table>
+</div>

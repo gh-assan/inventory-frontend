@@ -1,3 +1,24 @@
-<h1>
-  {{title}}
-</h1>
+
+<div class="container">
+  <top-menu> </top-menu>
+</div>
+
+
+<div class="hidden">
+    <!--<app-partner></app-partner>    -->
+    <a routerLink="/">Home</a>
+    <a routerLink="/persons">Person</a>
+    <a routerLink="/user">User</a>
+    
+</div>
+
+<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 mb-3 mt-5">
+  <div class="container">
+    <navigation-menu> </navigation-menu>
+  </div>
+
+  <div class="container">
+    <alert></alert>
+    <router-outlet></router-outlet>
+  </div>
+</main>

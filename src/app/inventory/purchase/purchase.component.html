@@ -1,0 +1,103 @@
+
+
+<div class="container">
+
+  <div *ngIf="!id ;else forminfo"> 
+
+      <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+        
+        <div class="form-group row">
+            
+            <div class="col-sm-3">
+              <!--<input class="form-control" formControlName="id" [(ngModel)]="purchaseItem.id" placeholder="id"/>
+              <div class="alert" *ngIf="!rForm.controls['id'].valid && rForm.controls['id'].touched" > this is required </div>
+               --> 
+              <select class="custom-select" [(ngModel)]="purchaseItem.product_id" formControlName="product_id" >
+                <option *ngFor="let product of products" class="form-control" 
+                        [value]="product.id">{{product.name}}</option>                
+              </select>
+            
+
+            </div>
+
+            <div class="col-sm-3">
+              <input class="form-control" formControlName="amount" [(ngModel)]="purchaseItem.amount" placeholder="amount"/>
+              <div class="alert" *ngIf="!rForm.controls['amount'].valid && rForm.controls['amount'].touched" > this is required </div>
+            </div>
+
+            <div class="col-sm-3">
+              <input class="form-control" formControlName="price" [(ngModel)]="purchaseItem.price" placeholder="Price"/>
+              <div class="alert" *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched" > this is required </div>
+            </div>
+            
+            <div class="btn-group col-sm-3" >
+                  <button  class="btn btn-primary" [disabled]="!rForm.valid"  (click)="addItem(purchaseItem)">Add</button>                                                    
+            </div>
+
+        </div>
+
+      </form>
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="purchaseData ;"> 
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Amount</th>
+                  <th>Price</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let purchaseItem of purchaseData.details" (click)="onSelect(purchaseItem)">
+                  <td>{{purchaseItem.product_name}}</td>
+                  <td>{{purchaseItem.amount}}</td>
+                  <td>{{purchaseItem.price}}</td>
+                  <td>
+                    <button type="button" class="close" aria-label="Close" (click)="removeItem(purchaseItem)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+</div>
+</div>          
+
+
+<div class="container">
+
+  <div *ngIf="purchaseData ;else forminfo"> 
+
+      <form [formGroup]="pForm" >
+
+        
+        <div class="form-group row">
+            
+            
+            <div class="col-sm-12">
+              <textarea class="form-control custom-control" rows="3" style="resize:yes" formControlName="description" [(ngModel)]="purchaseData.description" placeholder="Description" ></textarea>     
+
+              <div class="alert" *ngIf="!pForm.controls['description'].valid && pForm.controls['description'].touched" > this is required </div>
+            </div>
+            
+            <div class="btn-group col-sm-3" >
+                  <button  class="btn btn-primary"  (click)="create()">Save</button>                                                    
+            </div>
+
+        </div>
+
+      </form>
+
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+
+<div class="btn-group mb-3" role="group" >
+  <button class="btn btn-info" routerLink="/new-transaction-type" (click)="addNewTransactionType()">Add New</button>
+</div>
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>                  
+                  <th>Due Date</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transactionType of transactionTypes" (click)="onSelect(transactionType)">
+                  <td>{{transactionType.id}}</td>
+                  <td>{{transactionType.name}}</td>
+                  <td>{{transactionType.description}}</td>                  
+                  <td>{{transactionType.due_date}}</td>                  
+                </tr>
+              </tbody>
+            </table>
+</div>

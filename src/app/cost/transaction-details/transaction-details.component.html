@@ -1,0 +1,32 @@
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Creation Date</th>                  
+                  <th>Amount</th>                  
+                  <th>Received Date</th>                  
+                  <th>Schedule Date</th>                  
+                  <th>From Account</th>                  
+                  <th>From Account</th>                  
+                  <th>Cancelled By</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transactionDetails of transactionDetails" (click)="onSelect(transactionDetails)">
+                  <td>{{transactionDetails.id}}</td>
+                  <td>{{transactionDetails.creation_date}}</td>                  
+                  <td>{{transactionDetails.amount}}</td>                  
+                  <td>{{transactionDetails.received_date}}</td>                  
+                  <td>{{transactionDetails.schedule_date}}</td>                  
+                  <td>{{transactionDetails.account_from}}</td>                  
+                  <td>{{transactionDetails.account_to}}</td>                  
+                  <td>{{transactionDetails.cancelled_by_name}}</td>                                    
+                </tr>
+              </tbody>
+            </table>
+</div>
+<div class="btn-group mb-3" role="group" >
+  <button class="btn btn-info" routerLink="/new-transactionDetails-detail" (click)="addNewTransactionDetails()">Add New</button>
+</div>

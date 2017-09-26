@@ -1,0 +1,48 @@
+<p>
+  transaction-filter works!
+</p>
+
+
+<input (keyup)="description$.next(newQueryItem('total_amount',$event.target.value,'!='))" />                  
+
+<input (keyup)="userName$.next(newQueryItem('user_name',$event.target.value + '%' , 'ilike'))" />                  
+<input (keyup)="personName$.next(newQueryItem('person_name',$event.target.value))" />                  
+<!---->
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th (click)="order$.next('id')" >#</th>
+                  <th (click)="order$.next('description')">Description</th>                  
+                  <th (click)="order$.next('creation_date')">Creation Date</th>                  
+                  <th (click)="order$.next('update_date')">Update Date</th>                  
+                  <th (click)="order$.next('validation_date')">Validation Date</th>                  
+                  <th (click)="order$.next('total_amount')">Total Amount</th>                  
+                  <th (click)="order$.next('notes')">Notes</th>                  
+                  <th (click)="order$.next('user_name')">User Name</th>                  
+                  <th (click)="order$.next('person_name')">Person Name</th>                  
+                  <th (click)="order$.next('transaction_type')">Type</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transaction of transactions" (click)="onSelect(transaction)">
+                  <td>{{transaction.id}}</td>
+                  <td>{{transaction.description}}</td>                  
+                  <td>{{transaction.creation_date}}</td>                  
+                  <td>{{transaction.update_date}}</td>                  
+                  <td>{{transaction.validation_date}}</td>                  
+                  <td>{{transaction.total_amount}}</td>                  
+                  <td>{{transaction.notes}}</td>                  
+                  <td>{{transaction.user_name}}</td>                  
+                  <td>{{transaction.person_name}}</td>                  
+                  <td>{{transaction.transaction_type}}</td>                  
+                </tr>
+              </tbody>
+            </table>
+</div>
+<!--
+<div (click)="offset$.next(this.offset)" >
+   More
+</div>            
+-->

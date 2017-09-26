@@ -1,0 +1,92 @@
+
+<div class="container">
+
+  <div *ngIf="!id ;else forminfo"> 
+      <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+        <div class="form-gr oup row">
+            
+            
+            <label for="creation_date" class="col-sm-2 col-form-label">Creation Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="creation_date" [(ngModel)]="transactionDetails.creation_date" placeholder="Now"/>
+              <div class="alert" *ngIf="!rForm.controls['creation_date'].valid && rForm.controls['creation_date'].touched" > this is required </div>
+            </div>
+
+
+            <label for="amount" class="col-sm-2 col-form-label">Amount</label>  
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="amount"  [(ngModel)]="transactionDetails.amount"  placeholder="Amount"/>
+              <div class="alert" *ngIf="!rForm.controls['amount'].valid && rForm.controls['amount'].touched" > this is required </div>
+            </div>
+
+            
+            <label for="received_date" class="col-sm-2 col-form-label">Received Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="received_date" [(ngModel)]="transactionDetails.received_date" placeholder="Receive Date"/>
+              <div class="alert" *ngIf="!rForm.controls['received_date'].valid && rForm.controls['received_date'].touched" > this is required </div>
+            </div>
+            
+            <label for="schedule_date" class="col-sm-2 col-form-label">Schedule Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="schedule_date" [(ngModel)]="transactionDetails.schedule_date" placeholder="Schedule Date"/>
+              <div class="alert" *ngIf="!rForm.controls['schedule_date'].valid && rForm.controls['schedule_date'].touched" > this is required </div>
+            </div>
+  
+            
+            <label for="cancellation_date" class="col-sm-2 col-form-label">Cancellation Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="cancellation_date" [(ngModel)]="transactionDetails.cancellation_date" placeholder="Cancellation Date"/>
+              <div class="alert" *ngIf="!rForm.controls['cancellation_date'].valid && rForm.controls['cancellation_date'].touched" > this is required </div>
+            </div>
+            
+            <label for="cancellation_reason" class="col-sm-2 col-form-label">Cancellation Reason</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="cancellation_reason" [(ngModel)]="transactionDetails.cancellation_reason" placeholder="Cancellation Reason"/>
+              <div class="alert" *ngIf="!rForm.controls['cancellation_reason'].valid && rForm.controls['cancellation_reason'].touched" > this is required </div>
+            </div>
+
+
+            <label for="cancelled_by" class="col-sm-2 col-form-label">Cancelled By</label>  
+            <div class="col-sm-10">             
+              <select class="custom-select" [(ngModel)]="transactionDetails.cancelled_by" formControlName="cancelled_by" >
+                <option *ngFor="let user of users" class="form-control" 
+                        [value]="user.id">{{user.first_name}}</option>                
+              </select>
+            </div>
+  
+
+            <label for="account_id_from" class="col-sm-2 col-form-label">From Account</label>  
+            <div class="col-sm-10">             
+              <select class="custom-select" [(ngModel)]="transactionDetails.account_id_from" formControlName="account_id_from" >
+                <option *ngFor="let account of accounts" class="form-control" 
+                        [value]="account.id">{{account.name}}</option>                
+              </select>
+            </div>
+
+            <label for="account_id_to" class="col-sm-2 col-form-label">To Account</label>  
+            <div class="col-sm-10">             
+              <select class="custom-select" [(ngModel)]="transactionDetails.account_id_to" formControlName="account_id_to" >
+                <option *ngFor="let account of accounts" class="form-control" 
+                        [value]="account.id">{{account.name}}</option>                
+              </select>
+            </div>
+
+
+            
+
+            <div class="btn-group row" role="group">
+                  <button  class="btn btn-primary" [disabled]="!rForm.valid" routerLink="/transaction-details" (click)="saveTransactionDetails(transactionDetails)">Save</button>
+                  <button  class="btn btn-danger" *ngIf="transactionDetails.id" routerLink="/transaction-details" (click)="deleteTransactionDetails(transactionDetails.id)">Delete</button>
+                
+            </div>
+
+        </div>
+
+      </form>
+  </div>
+
+</div>
+<ng-template #forminfo>
+  aaa
+</ng-template>  

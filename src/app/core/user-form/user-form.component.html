@@ -1,0 +1,47 @@
+
+<div class="container">
+
+  <div *ngIf="!id ;else forminfo"> 
+      <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+        <div class="form-gr oup row">
+            
+            <label for="first_name" class="col-sm-2 col-form-label">First Name</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="first_name" [(ngModel)]="user.first_name" placeholder="First Name"/>
+              <div class="alert" *ngIf="!rForm.controls['first_name'].valid && rForm.controls['first_name'].touched" > this is required </div>
+            </div>
+
+            <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="last_name" [(ngModel)]="user.last_name" placeholder="Last Name"/>
+              <div class="alert" *ngIf="!rForm.controls['last_name'].valid && rForm.controls['last_name'].touched" > this is required </div>
+            </div>
+
+            <label for="email" class="col-sm-2 col-form-label">Email</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="email" [(ngModel)]="user.email" placeholder="Email"/>
+              <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched" > this is required </div>
+            </div>
+
+            <label for="is_active" class="col-sm-2 col-form-label">Active</label>    
+            <div class="col-sm-10">
+              <input class="form-control pt-3 mt-3 pr-20 mr-20" formControlName="is_active" [(ngModel)]="user.is_active" type="checkbox"/>              
+            </div>
+
+
+            <div class="btn-group row" role="group">
+                  <button  class="btn btn-primary" [disabled]="!rForm.valid" routerLink="/user" (click)="saveUser(user)">Save</button>
+                  <button  class="btn btn-danger" *ngIf="user.id" routerLink="/user" (click)="deleteUser(user.id)">Delete</button>
+                
+            </div>
+
+        </div>
+
+      </form>
+  </div>
+
+</div>
+
+
+

@@ -1,0 +1,28 @@
+
+<div class="btn-group mb-3" role="group" >
+  <button class="btn btn-info" routerLink="/new-product" (click)="addNewProduct()">Add New</button>
+</div>
+
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products" (click)="onSelect(product)">
+                  <td>{{product.id}}</td>
+                  <td>{{product.product_type}}</td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.price}}</td>
+                </tr>
+              </tbody>
+            </table>
+</div>

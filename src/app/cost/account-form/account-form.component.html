@@ -1,0 +1,55 @@
+
+<div class="container">
+
+  <div *ngIf="!id ;else forminfo"> 
+      <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+        <div class="form-gr oup row">
+            
+            <label for="name" class="col-sm-2 col-form-label">Name</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="name" [(ngModel)]="account.name" placeholder="Name"/>
+              <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched" > this is required </div>
+            </div>
+
+            <label for="description" class="col-sm-2 col-form-label">Description</label>  
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="description"  [(ngModel)]="account.description"  placeholder="Description"/>
+              <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched" > this is required </div>
+            </div>
+            
+            <label for="ledger_id" class="col-sm-2 col-form-label">Ledger</label>  
+            <div class="col-sm-10">             
+              <select class="custom-select" [(ngModel)]="account.ledger_id" formControlName="ledger_id" >
+                <option *ngFor="let ledger of ledgers" class="form-control" 
+                        [value]="ledger.id">{{ledger.name}}</option>                
+              </select>
+            </div>
+
+
+            <label for="person_id" class="col-sm-2 col-form-label">Person</label>  
+            <div class="col-sm-10">             
+              <select class="custom-select" [(ngModel)]="account.person_id" formControlName="person_id" >
+                <option *ngFor="let person of persons" class="form-control" 
+                        [value]="person.id">{{person.full_name}}</option>                
+              </select>
+            </div>
+
+
+            <div class="btn-group row" role="group">
+                  <button  class="btn btn-primary" [disabled]="!rForm.valid" routerLink="/account" (click)="saveAccount(account)">Save</button>
+                  <button  class="btn btn-danger" *ngIf="account.id" routerLink="/account" (click)="deleteAccount(account.id)">Delete</button>
+                
+            </div>
+
+        </div>
+
+      </form>
+  </div>
+
+</div>
+<ng-template #forminfo>
+  aaa
+</ng-template>  
+
+

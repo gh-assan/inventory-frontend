@@ -1,0 +1,58 @@
+
+<div class="container">
+
+  <div *ngIf="!id ;else forminfo"> 
+
+      <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+
+        <div class="form-group row">
+            
+            <label for="name" class="col-sm-2 col-form-label">Name</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="name" [(ngModel)]="product.name" placeholder="Name"/>
+              <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched" > this is required </div>
+            </div>
+
+            <label for="description" class="col-sm-2 col-form-label">Description</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="description" [(ngModel)]="product.description" placeholder="Description"/>
+              <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched" > this is required </div>
+            </div>
+
+            <label for="price" class="col-sm-2 col-form-label">Price</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="price" [(ngModel)]="product.price" placeholder="Price"/>
+              <div class="alert" *ngIf="!rForm.controls['price'].valid && rForm.controls['price'].touched" > this is required </div>
+            </div>
+
+            
+            <label for="creation_date" class="col-sm-2 col-form-label">Creation Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="creation_date" [(ngModel)]="product.creation_date" placeholder="Now"/>
+              <div class="alert" *ngIf="!rForm.controls['creation_date'].valid && rForm.controls['creation_date'].touched" > this is required </div>
+            </div>
+
+            <label for="update_date" class="col-sm-2 col-form-label">Update Date</label>    
+            <div class="col-sm-10">
+              <input class="form-control" formControlName="update_date" [(ngModel)]="product.update_date" placeholder="Now"/>
+              <div class="alert" *ngIf="!rForm.controls['update_date'].valid && rForm.controls['update_date'].touched" > this is required </div>
+            </div>
+
+
+
+            <div class="btn-group row" role="group">
+                  <button  class="btn btn-primary" [disabled]="!rForm.valid" routerLink="/product" (click)="saveProduct(product)">Save</button>
+                  <button  class="btn btn-danger" *ngIf="product.id" routerLink="/product" (click)="deleteProduct(product.id)">Delete</button>
+                
+            </div>
+
+        </div>
+
+      </form>
+
+  </div>
+
+</div>
+
+
+

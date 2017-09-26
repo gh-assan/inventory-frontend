@@ -1,0 +1,23 @@
+
+<div class="btn-group mb-3" role="group" >
+  <button class="btn btn-info" routerLink="/new-person" (click)="addNewPerson()">Add New</button>
+</div>
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Full Name</th>
+                  <th>Address Details</th>                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let person of persons" (click)="onSelect(person)">
+                  <td>{{person.id}}</td>
+                  <td>{{person.full_name}}</td>
+                  <td>{{person.address_details}}</td>                  
+                </tr>
+              </tbody>
+            </table>
+</div>
